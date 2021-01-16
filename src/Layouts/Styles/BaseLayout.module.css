@@ -1,0 +1,32 @@
+.mainWrapper {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    position: relative;
+    overflow-y: auto;
+    background-color: #fffaf0;
+    flex: 1;
+    padding: 15px;
+}
+
+header, footer {
+    padding: 10px 15px;
+}
+
+header {
+    background-color: aliceblue;
+}
+footer {
+    background-color: aliceblue;
+}
+
+.item {
+    height: 400px;
+    width: 400px;
+    margin: 5px 0;
+    background-color: lightblue;
+}
+

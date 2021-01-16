@@ -1,0 +1,15 @@
+.listWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: flex-start;
+}
+
+.movieItemWrapper {
+    box-sizing: border-box;
+    padding: 5px;
+    flex-basis: 25%;
+    border-radius: 25px;
+    border: 1px solid cornflowerblue;
+    overflow: auto;
+}

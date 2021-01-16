@@ -1,0 +1,16 @@
+.itemContent h2 {
+    text-align: center;
+}
+
+.imageWrapper {
+    margin-top: 10px;
+    background-repeat: no-repeat;
+    background-size: 95%;
+    background-position: top;
+    height: 300px;
+    width: 100%;
+}
+
+.itemWrapper {
+
+}
