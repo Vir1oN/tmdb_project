@@ -12,7 +12,6 @@ export default function MovieItem(props) {
                 <h2>{original_title}</h2>
                 <span>Rating: {vote_average}</span>
                 <h3>{genres.map(genreObj => <span key={genreObj.id}>{genreObj.name + ' '}</span>)}</h3>
-                <p>{overview}</p>
                 <span>Release date: {release_date}</span>
             </div>
         </div>

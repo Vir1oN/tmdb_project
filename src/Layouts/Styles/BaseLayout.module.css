@@ -18,9 +18,21 @@ header, footer {
 
 header {
     background-color: aliceblue;
+    display: flex;
+    flex-direction: row;
+    /*justify-content: space-between;*/
 }
 footer {
     background-color: aliceblue;
+}
+
+.searchBarWrapper {
+    flex-basis: 90%;
+    display: flex;
+    justify-content: center;
+}
+.linkWrapper {
+
 }
 
 .item {

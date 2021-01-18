@@ -1,24 +1,24 @@
-import React,{useEffect, useState} from 'react';
-import MovieList from "../../Components/MovieList/MovieList";
+import React, {useEffect, useState} from "react";
+import {useHistory, useRouteMatch} from "react-router-dom";
 import {MovieService} from "../../Services";
 import {GenresService} from "../../Services/GenresService";
-import { useHistory } from "react-router-dom";
-import { toast } from 'react-toastify';
-import {PaginatedList} from "../../Components/PaginatedList/PaginatedList";
-import styles from './Home.module.css'
+import {toast} from "react-toastify";
+import styles from "../../Pages/Home/Home.module.css";
+import {PaginatedList} from "../PaginatedList/PaginatedList";
+import MovieList from "../MovieList/MovieList";
+import ReactDOM from 'react-dom';
+import { Redirect } from 'react-router-dom'
 
-export function Home() {
+export default function SearchResults () {
     let [movieList, setMovieList] = useState([]);
     let [genresList, setGenresList] = useState([]);
-    let [pagingData, setPagingData] = useState(null);
     let [isLoading, setIsLoading] = useState(null);
     const history = useHistory();
+    const {params} = useRouteMatch();
 
-    const fetchMovies = async (params) => {
+    const fetchMovies = async (searchStr) => {
         try {
-            const {results, page, total_pages} = await MovieService.getMovies(params);
-            history.push(`${page}`);
-            setPagingData({page, total_pages});
+            const {results} = await MovieService.searchMoviesByName(searchStr);
             return results;
         } catch (e) {
             console.error(e);
@@ -33,20 +33,19 @@ export function Home() {
         }
     };
 
-    const fetchMoviesData = async (params) => {
+    const fetchMoviesData = async (searchStr) => {
         setIsLoading(true);
 
-        const requests = genresList.length ? [fetchMovies(params)] : [ fetchMovies(params), fetchGenres()];
+        const requests = [fetchMovies(searchStr), fetchGenres()];
         try {
-            const [movies, genres = genresList] = await Promise.all(requests);
+            const [movies, genres] = await Promise.all(requests);
             movies.forEach((movie) => {
                 const movieGenres = movie.genre_ids.map(id => genres.find(genreObj => genreObj.id === id));
 
                 delete movie.genre_ids;
                 movie.genres = movieGenres;
-                });
-            
-            setGenresList(genres);
+            });
+
             setMovieList(movies);
         }
         catch (e) {
@@ -63,20 +62,15 @@ export function Home() {
         history.push(`movie/${movie.id}`);
     }
 
-    const refreshPage = async (pageNumber) => {
-        fetchMoviesData({page: pageNumber});
-    }
-
     useEffect(() => {
-        fetchMoviesData();
+        fetchMoviesData(params.str);
     }, []);
 
     return (
         <div>
-        { (isLoading || isLoading === null) ? renderLoadingIndicator() :
-        <PaginatedList currentPage={pagingData.page} totalPages={pagingData.total_pages} refreshPage={refreshPage}>
-            <MovieList items={movieList} onMovieClick={onMovieClick}/>
-        </PaginatedList> }
+            { (isLoading || isLoading === null) ? renderLoadingIndicator() :
+                    <MovieList items={movieList} onMovieClick={onMovieClick}/>
+            }
         </div>
     );
 }

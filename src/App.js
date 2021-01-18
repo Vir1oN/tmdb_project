@@ -7,23 +7,38 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
-    Link
+    Link,
+    Redirect
 } from "react-router-dom";
 import MovieDetails from "./Pages/MovieDetails/MovieDetails";
+import SearchResults from "./Components/SearchResults/SearchResults";
 
 function App() {
     return (
         <BaseLayout>
             <Switch>
-                <Route path='/movie/:id'>
-                    <MovieDetails>
+                <Route path='/search/movie/:id'>
+                    <MovieDetails/>
+                </Route>
 
-                    </MovieDetails>
+                <Route path='/search/:str'>
+                    <SearchResults/>
+                </Route>
+
+                <Route path='/movie/:id'>
+                    <MovieDetails/>
+                </Route>
+
+                <Route path='/:num'>
+                    <Home/>
                 </Route>
 
                 <Route path='/'>
-                    <Home>
-                    </Home>
+                    <Redirect to="/1"/>
+                </Route>
+
+                <Route>
+                    <h1>404 - Page not found</h1>
                 </Route>
             </Switch>
         </BaseLayout>
