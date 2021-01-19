@@ -1,9 +1,9 @@
-import React,{useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import MovieList from "../../Components/MovieList/MovieList";
 import {MovieService} from "../../Services";
 import {GenresService} from "../../Services/GenresService";
-import { useHistory } from "react-router-dom";
-import { toast } from 'react-toastify';
+import {useHistory} from "react-router-dom";
+import {toast} from 'react-toastify';
 import {PaginatedList} from "../../Components/PaginatedList/PaginatedList";
 import styles from './Home.module.css'
 

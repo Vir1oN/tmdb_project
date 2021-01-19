@@ -1,15 +1,8 @@
 import './App.css';
-import {MovieService} from "./Services";
-import React, {useEffect} from 'react'
+import React from 'react'
 import {BaseLayout} from "./Layouts/BaseLayout";
 import {Home} from "./Pages/Home/Home";
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link,
-    Redirect
-} from "react-router-dom";
+import {Redirect, Route, Switch} from "react-router-dom";
 import MovieDetails from "./Pages/MovieDetails/MovieDetails";
 import SearchResults from "./Components/SearchResults/SearchResults";
 

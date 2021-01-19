@@ -1,6 +1,5 @@
 import styles from './Styles/BaseLayout.module.css'
 import {Link} from "react-router-dom";
-import {useState} from 'react'
 import {SearchBar} from "../Components/SearchBar/SearchBar";
 
 export function BaseLayout({children}) {

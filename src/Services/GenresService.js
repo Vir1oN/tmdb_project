@@ -1,4 +1,3 @@
-import {AXIOS} from "./axios";
 import {FetchService} from "./FetchService";
 
 export class GenresService extends FetchService{

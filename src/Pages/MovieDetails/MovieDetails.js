@@ -1,7 +1,7 @@
-import React, {useState, useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import {useRouteMatch} from 'react-router-dom'
 import {MovieService} from "../../Services";
-import { toast } from 'react-toastify';
+import {toast} from 'react-toastify';
 
 const buildPosterUrl = (imgPath, width = 200) => `https://image.tmdb.org/t/p/w${width}/${imgPath}`
 

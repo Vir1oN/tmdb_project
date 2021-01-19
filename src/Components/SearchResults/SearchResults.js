@@ -4,14 +4,10 @@ import {MovieService} from "../../Services";
 import {GenresService} from "../../Services/GenresService";
 import {toast} from "react-toastify";
 import styles from "../../Pages/Home/Home.module.css";
-import {PaginatedList} from "../PaginatedList/PaginatedList";
 import MovieList from "../MovieList/MovieList";
-import ReactDOM from 'react-dom';
-import { Redirect } from 'react-router-dom'
 
 export default function SearchResults () {
     let [movieList, setMovieList] = useState([]);
-    let [genresList, setGenresList] = useState([]);
     let [isLoading, setIsLoading] = useState(null);
     const history = useHistory();
     const {params} = useRouteMatch();
